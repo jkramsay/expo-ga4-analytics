@@ -50,7 +50,6 @@ export default class Analytics {
                 this.userAgent = userAgent;
                 if(this.options.debug){
                     console.log(`[expo-ga4-analytics] UserAgent=${userAgent}`);
-                    console.log(`[expo-ga4-analytics] Additional parameters=`, this.parameters);
                 }
             });
     }
@@ -58,7 +57,7 @@ export default class Analytics {
     track(eventName, params) {
 
         if(this.options.debug) {
-            console.log(`[expo-ga4-analytics] track ${eventName} with params ${params}`);
+            console.log(`[expo-ga4-analytics] track ${eventName} with params ${JSON.stringify(params)}`);
         }
         
         let event = {
@@ -103,11 +102,6 @@ export default class Analytics {
             //Request opaque resources to avoid preflight CORS error in Safari
             options.mode = 'no-cors'; // no-cors, *cors, same-origin
         }        
-
-        if(this.options.debug) {
-            console.log(`[expo-ga4-analytics] send ${options}`);
-        }
-
         return fetch(url, options);
     }
 }
