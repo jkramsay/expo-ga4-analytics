@@ -49,8 +49,8 @@ export default class Analytics {
             .then(userAgent => {
                 this.userAgent = userAgent;
                 if(this.options.debug){
-                    console.log(`[expo-analytics] UserAgent=${userAgent}`);
-                    console.log(`[expo-analytics] Additional parameters=`, this.parameters);
+                    console.log(`[expo-ga4-analytics] UserAgent=${userAgent}`);
+                    console.log(`[expo-ga4-analytics] Additional parameters=`, this.parameters);
                 }
             });
     }
@@ -58,7 +58,7 @@ export default class Analytics {
     track(eventName, params) {
 
         if(this.options.debug) {
-            console.log(`[expo-analytics] track ${eventName} with params ${params}`);
+            console.log(`[expo-ga4-analytics] track ${eventName} with params ${params}`);
         }
         
         let event = {
@@ -105,7 +105,7 @@ export default class Analytics {
         }        
 
         if(this.options.debug) {
-            console.log(`[expo-analytics] send ${options}`);
+            console.log(`[expo-ga4-analytics] send ${options}`);
         }
 
         return fetch(url, options);
